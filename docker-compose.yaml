@@ -1,0 +1,55 @@
+version: '3.8'
+services:
+  db:
+    image: mysql:latest
+    networks:
+      - notable-network
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=s3cr3t
+      - MYSQL_DATABASE=notable_db
+      - MYSQL_USER=notable_user
+      - MYSQL_PASSWORD=n0tabl3
+    profiles:
+      - fullstack
+      - dbonly
+      - dbinit
+    healthcheck:
+      test: ["CMD-SHELL", "exit | mysql -h localhost -P 3306 -u root -p$$MYSQL_ROOT_PASSWORD" ]
+      interval: 5s
+      timeout: 20s
+      retries: 30
+  db-init:
+    build:
+      context: db-init
+      dockerfile: Dockerfile
+    networks:
+      - notable-network
+    profiles:
+      - dbinit
+    environment:
+      - MYSQL_USER=notable_user
+      - MYSQL_PASSWORD=n0tabl3
+    depends_on:
+      db:
+        condition: service_healthy
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    networks:
+      - notable-network
+    ports:
+      - 8081:80
+      - 7071:7071
+    environment:
+      - DATBASE_URL=DATABASE_URL="mysql://notable_user:n0tabl3@db:3306/notable_db"
+    profiles:
+      - fullstack
+    depends_on:
+      db:
+        condition: service_healthy
+networks:
+  notable-network:
+    name: notable-network

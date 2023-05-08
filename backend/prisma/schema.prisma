@@ -1,0 +1,20 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model todos {
+  id        Int      @id @default(autoincrement())
+  todo     String   @db.VarChar(100)
+  created   DateTime @default(now()) @db.Timestamp(6)
+  updated   DateTime? @default(now()) @db.Timestamp(6)
+  completed DateTime? @default(now()) @db.Timestamp(6)
+  deleted   DateTime? @default(now()) @db.Timestamp(6)
+}
