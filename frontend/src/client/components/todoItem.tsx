@@ -1,8 +1,8 @@
 import React,{ FC } from 'react';
 import styles from './todoitem.module.css';
-import { ToDoItem } from '../../common/types';
+import { ToDoItemType } from '../../server/common/types';
 
-interface ToDoItemProp extends ToDoItem {
+interface ToDoItemProp extends ToDoItemType {
     onCompleted: Function
 }
 

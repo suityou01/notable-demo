@@ -4,7 +4,7 @@ import { Request, Response } from 'express';
 import { NextServer } from 'next/dist/server/next';
 import urls from 'src/server/bffUrls';
 import axios from 'axios';
-import { ToDoItem } from '../../../common/types';
+import { ToDoItemType } from '../../common/types'; //**** this import breaks the build ***
 
 @Injectable()
 export class ViewService implements OnModuleInit {
@@ -31,9 +31,9 @@ export class ViewService implements OnModuleInit {
     return this.server.getRequestHandler()(req, res);
   }
 
-  async getTodos() {
+  async getTodos(): Promise<ToDoItemType[]> {
     return await axios
-      .get(urls.todos, {
+      .get<ToDoItemType[]>(urls.todos, {
         headers: {
           'Content-Type': 'application/json',
         },
@@ -41,7 +41,7 @@ export class ViewService implements OnModuleInit {
       .then((response) => response.data);
   }
 
-  async updateTodo(todo: ToDoItem) {
+  async updateTodo(todo: ToDoItemType) {
     return await axios
       .put(`${urls.todo}${todo.id}`, {
         headers: {

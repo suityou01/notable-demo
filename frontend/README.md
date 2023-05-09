@@ -112,6 +112,22 @@ rm *.*
 }
 ```
 
+NB Do not import any functions from any modules outside of this sourceRoot!
+If you do you may see an error like this:
+
+```bash
+charlie@hurley:~/notable/frontend$ npm run start
+
+> frontend@0.0.1 start
+> nest start
+
+Error: Cannot find module '/home/charlie/notable/frontend/dist/main'
+    at Function.Module._resolveFilename (node:internal/modules/cjs/loader:933:15)
+    at Function.Module._load (node:internal/modules/cjs/loader:778:27)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:79:12)
+    at node:internal/main/run_main_module:17:47
+```
+
 ```json
 // add include to tsconfig.json
 {

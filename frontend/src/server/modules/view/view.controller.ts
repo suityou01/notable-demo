@@ -7,6 +7,12 @@ import { ViewService } from './view.service';
 export class ViewController {
   constructor(private viewService: ViewService) {}
 
+  @Get('about')
+  public async about(@Req() req: Request, @Res() res: Response) {
+    const handle = this.viewService.getNextServer().getRequestHandler();
+    handle(req, res);
+  }
+
   @Get('todos')
   static(@Req() req: Request, @Res() res: Response) {
     const handle = this.viewService.getNextServer().getRequestHandler();

@@ -2,7 +2,7 @@ import React, { useEffect, useCallback, useState } from 'react';
 import { NextPage } from 'next';
 import ToDoItem from '../components/todoItem';
 import { getTodos, updateTodo } from '../services/todos';
-import { ToDoItem as ToDoItemType } from '../../common/types';
+import { ToDoItemType } from '../../server/common/types';
 
 const Home: NextPage = () => {
     const onCompleted = (evt) => {
@@ -20,7 +20,7 @@ const Home: NextPage = () => {
 
  return (
     <> 
-        { todos.map((todo)=><ToDoItem id={todo.id} todo={todo.todo} completed={todo.completed} onCompleted={onCompleted}></ToDoItem>) }
+        { todos && todos.map((todo)=><ToDoItem key={todo.id} id={todo.id} todo={todo.todo} completed={todo.completed} onCompleted={onCompleted}></ToDoItem>) }
     </>
     )
 }
