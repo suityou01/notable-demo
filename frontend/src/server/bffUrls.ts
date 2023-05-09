@@ -5,4 +5,5 @@ const baseUrl = `${scheme}://${host}:${port}/api`;
 
 export default {
   todos: `${baseUrl}/todos`,
+  todo: `${baseUrl}/todo`,
 };

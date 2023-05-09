@@ -1,4 +1,4 @@
-import { Controller, Get, Res, Req } from '@nestjs/common';
+import { Controller, Get, Put, Res, Req } from '@nestjs/common';
 import { Request, Response } from 'express';
 
 import { ViewService } from './view.service';
@@ -15,8 +15,14 @@ export class ViewController {
 
   @Get('api/todos')
   public async api_todos(@Req() req: Request, @Res() res: Response) {
-    const todos = await this.viewService.getTodos(req);
+    const todos = await this.viewService.getTodos();
     res.json(todos);
+  }
+
+  @Put('api/todos/:id')
+  public async update_todo(@Req() req: Request, @Res() res: Response) {
+    const todo = await this.viewService.updateTodo(req.body);
+    res.json(todo);
   }
 
   @Get('_next*')

@@ -24,8 +24,12 @@ let ViewController = class ViewController {
         handle(req, res);
     }
     async api_todos(req, res) {
-        const todos = await this.viewService.getTodos(req);
+        const todos = await this.viewService.getTodos();
         res.json(todos);
+    }
+    async update_todo(req, res) {
+        const todo = await this.viewService.updateTodo(req.body);
+        res.json(todo);
     }
     async assets(req, res) {
         await this.viewService.handler(req, res);
@@ -50,6 +54,14 @@ __decorate([
     __metadata("design:paramtypes", [Object, Object]),
     __metadata("design:returntype", Promise)
 ], ViewController.prototype, "api_todos", null);
+__decorate([
+    (0, common_1.Put)('api/todos/:id'),
+    __param(0, (0, common_1.Req)()),
+    __param(1, (0, common_1.Res)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object, Object]),
+    __metadata("design:returntype", Promise)
+], ViewController.prototype, "update_todo", null);
 __decorate([
     (0, common_1.Get)('_next*'),
     __param(0, (0, common_1.Req)()),

@@ -34,9 +34,18 @@ let ViewService = class ViewService {
     handler(req, res) {
         return this.server.getRequestHandler()(req, res);
     }
-    async getTodos(req) {
+    async getTodos() {
         return await axios_1.default
             .get(bffUrls_1.default.todos, {
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
+            .then((response) => response.data);
+    }
+    async updateTodo(todo) {
+        return await axios_1.default
+            .put(`${bffUrls_1.default.todo}${todo.id}`, {
             headers: {
                 'Content-Type': 'application/json',
             },

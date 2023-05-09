@@ -6,5 +6,6 @@ const port = 7071;
 const baseUrl = `${scheme}://${host}:${port}/api`;
 exports.default = {
     todos: `${baseUrl}/todos`,
+    todo: `${baseUrl}/todo`,
 };
 //# sourceMappingURL=bffUrls.js.map

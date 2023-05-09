@@ -11,6 +11,18 @@ const getTodos = async () : Promise<ToDoItem[]> => {
     return todos.data;
 }
 
+const updateTodo = async (todo: ToDoItem) : Promise<ToDoItem> => {
+    const response: AxiosResponse<ToDoItem, any> = await axios.put<ToDoItem>(urls.todo, {
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        todo
+    })
+    const data = await response.data;
+    return data;
+}
+
 export {
-    getTodos
+    getTodos,
+    updateTodo
 }

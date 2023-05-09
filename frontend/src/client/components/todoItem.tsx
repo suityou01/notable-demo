@@ -2,9 +2,13 @@ import React,{ FC } from 'react';
 import styles from './todoitem.module.css';
 import { ToDoItem } from '../../common/types';
 
-const ToDoItem: FC<ToDoItem> = ( { id, todo, completed }: ToDoItem ) => {
-    const onchecked = (evt) => {
+interface ToDoItemProp extends ToDoItem {
+    onCompleted: Function
+}
 
+const ToDoItem: FC<ToDoItemProp> = ( { id, todo, completed, onCompleted }: ToDoItemProp ) => {
+    const onchecked = (evt) => {
+        onCompleted(evt);
     }
     return (
     <div className={styles.todoItem}>
