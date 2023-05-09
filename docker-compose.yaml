@@ -15,6 +15,7 @@ services:
       - fullstack
       - dbonly
       - dbinit
+      - backendonly
     healthcheck:
       test: ["CMD-SHELL", "exit | mysql -h localhost -P 3306 -u root -p$$MYSQL_ROOT_PASSWORD" ]
       interval: 5s
@@ -44,9 +45,10 @@ services:
       - 8081:80
       - 7071:7071
     environment:
-      - DATBASE_URL=DATABASE_URL="mysql://notable_user:n0tabl3@db:3306/notable_db"
+      - DATABASE_URL=mysql://notable_user:n0tabl3@db:3306/notable_db
     profiles:
       - fullstack
+      - backendonly
     depends_on:
       db:
         condition: service_healthy

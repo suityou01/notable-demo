@@ -1,0 +1,39 @@
+.todoItem, .todoItemContainer {
+    display: flex;
+    align-items: center;
+}
+
+.todoItemContainer {
+    justify-content: space-between;
+    text-align: center;
+}
+.todoItemId {
+    background-color: #77dd77;
+    padding: 5px;
+    border-radius: 10px 0px 0px 10px;
+}
+
+.todoItem {
+    width: 25em;
+}
+
+.todoItemText {
+    background-color: #e5f8e5;
+    padding: 5px;
+}
+
+.todoItemText:has(~ div > input:checked) {
+    text-decoration: line-through;
+}
+
+
+.todoItemCompleted {
+    border-radius: 0px 10px 10px 0px;
+    width: 1.5em;
+    background-color: #77dd77;
+    padding: 4.5px;
+}
+
+.checkbox {
+    accent-color: #77dd77;
+}
