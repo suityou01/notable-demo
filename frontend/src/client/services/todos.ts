@@ -1,9 +1,9 @@
 import urls from '../urls';
 import axios, { AxiosResponse } from 'axios';
-import { ToDoItem } from '../../common/types';
+import { ToDoItemType } from '../../server/common/types';
 
-const getTodos = async () : Promise<ToDoItem[]> => {
-    const todos = await axios.get<ToDoItem[]>(urls.todos, {
+const getTodos = async () : Promise<ToDoItemType[]> => {
+    const todos = await axios.get<ToDoItemType[]>(urls.todos, {
         headers: {
             'Content-Type': 'application/json'
         }
@@ -11,8 +11,8 @@ const getTodos = async () : Promise<ToDoItem[]> => {
     return todos.data;
 }
 
-const updateTodo = async (todo: ToDoItem) : Promise<ToDoItem> => {
-    const response: AxiosResponse<ToDoItem, any> = await axios.put<ToDoItem>(urls.todo, {
+const updateTodo = async (todo: ToDoItemType) : Promise<ToDoItemType> => {
+    const response: AxiosResponse<ToDoItemType, any> = await axios.put<ToDoItemType>(urls.todo, {
         headers: {
             'Content-Type': 'application/json'
         },
