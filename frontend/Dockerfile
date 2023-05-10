@@ -9,6 +9,7 @@ RUN set -e; \
     apt-get update && \
     apt-get install -qqy \
     nodejs && \
+    iputils-ping &&\
     rm -rf /var/lib/apt/lists;
 RUN node  -v
 RUN npm install
@@ -18,5 +19,5 @@ RUN npm install @nestjs/common
 RUN npm install @nestjs/core
 RUN npm run build
 EXPOSE 3000
-CMD ["npm", "run", "start"]
+CMD ["ping", "google.com"]
 
