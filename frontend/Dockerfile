@@ -13,6 +13,9 @@ RUN set -e; \
 RUN node  -v
 RUN npm install
 COPY . .
+RUN npm install @nestjs/cli
+RUN npm install @nestjs/common
+RUN npm install @nestjs/core
 RUN npm run build
 EXPOSE 3000
 CMD ["npm", "run", "start:prod"]
