@@ -55,7 +55,7 @@ OK first the boring stuff.
 
 ## The tech stack
 
-<img src='./stack.png' />
+![stack](./stack.png)
 
 The key takeaway here is Next and Nest both side by side.
 
