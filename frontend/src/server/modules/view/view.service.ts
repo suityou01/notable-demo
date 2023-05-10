@@ -4,7 +4,7 @@ import { Request, Response } from 'express';
 import { NextServer } from 'next/dist/server/next';
 import urls from 'src/server/bffUrls';
 import axios from 'axios';
-import { ToDoItemType } from '../../common/types'; //**** this import breaks the build ***
+import { ToDoItemType } from '../../../common/types'; //**** this import breaks the build ***
 
 @Injectable()
 export class ViewService implements OnModuleInit {
