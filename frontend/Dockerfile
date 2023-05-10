@@ -1,7 +1,7 @@
-FROM node:16
+FROM node:18
 WORKDIR /app
 COPY package*.json .
-RUN NODE_ENV=development && npm ci
+RUN npm install --only=development
 COPY . .
 EXPOSE 3000
 CMD ["npm", "run", "start:dev"]
