@@ -199,11 +199,18 @@ echo "DATABASE_URL='mysql://notable_user:n0tabl3@localhost:3306/notable_db'" > b
 # Docker
 ### Initial setup
 
+Prerequisites
+- nvm
+- node >=18
+- docker >=23.0.5
+- docker-compose >=1.29.2
+
 ```bash
+nvm install lts/hydrogen
+nvm use lts/hydrogen
 git clone https://github.com/suityou01/notable-demo.git
 cd notable-demo/frontend
 npm install
-cd ..
 cd ..
 ```
 
