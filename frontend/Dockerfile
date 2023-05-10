@@ -8,8 +8,7 @@ RUN curl -sL https://deb.nodesource.com/setup_16.x | bash -
 RUN set -e; \
     apt-get update && \
     apt-get install -qqy \
-    nodejs && \
-    iputils-ping &&\
+    nodejs iputils-ping && \
     rm -rf /var/lib/apt/lists;
 RUN node  -v
 RUN npm install
