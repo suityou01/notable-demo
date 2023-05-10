@@ -200,6 +200,15 @@ echo "DATABASE_URL='mysql://notable_user:n0tabl3@localhost:3306/notable_db'" > b
 ### Initial setup
 
 ```bash
+git clone https://github.com/suityou01/notable-demo.git
+cd notable-demo/frontend
+npm install
+cd ..
+cd ..
+```
+
+
+```bash
 # Make sure nothing is running on 0.0.0.0:3306
 docker-compose --profile dbinit up --build
 ```
