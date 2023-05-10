@@ -1,5 +1,5 @@
 const scheme = 'http';
-const host = 'localhost';
+const host = process.env.BACKEND_HOST || 'localhost';
 const port = 7071;
 const baseUrl = `${scheme}://${host}:${port}/api`;
 

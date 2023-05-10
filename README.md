@@ -200,6 +200,7 @@ echo "DATABASE_URL='mysql://notable_user:n0tabl3@localhost:3306/notable_db'" > b
 ### Initial setup
 
 ```bash
+# Make sure nothing is running on 0.0.0.0:3306
 docker-compose --profile dbinit up --build
 ```
 

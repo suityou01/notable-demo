@@ -56,6 +56,10 @@ services:
     build:
       context: ./frontend
       dockerfile: Dockerfile
+    networks:
+      - notable-network
+    environment:
+      - BACKEND_HOST=backend
     volumes:
       - ./frontend:/app #NB build context does not apply to bind mounts ;-)
     ports: 

@@ -1,0 +1,7 @@
+.pageContainer {
+    display: flex;
+}
+
+.pageColumn {
+    display: block;
+}

@@ -20,6 +20,7 @@
 .todoItemText {
     background-color: #e5f8e5;
     padding: 5px;
+    width: 20em;
 }
 
 .todoItemText:has(~ div > input:checked) {
